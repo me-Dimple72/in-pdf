@@ -158,7 +158,12 @@ in'PDF in'PDF in'PDF in'PDF in'PDF in'PDF in'PDF
         <p className="upload-label">UPLOAD DOCUMENT</p>
 
         <div
-         className="drop-area">
+  className={`drop-area ${dragOver ? "drag-over" : ""}`}
+  onDragOver={onDragOver}
+  onDragLeave={onDragLeave}
+  onDrop={onDrop}
+>
+          
           <div className="drop-inner">
 
             <h2>Drop your PDF here</h2>
