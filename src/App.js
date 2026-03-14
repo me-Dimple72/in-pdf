@@ -4,7 +4,7 @@ import * as pdfjsLib from "pdfjs-dist";
 
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
-const BACKEND = "http://localhost:5000";
+const BACKEND = "https://in-pdf-api.onrender.com";
 
 export default function App() {
  
