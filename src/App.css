@@ -1,38 +1,493 @@
-.App {
+/* ============================================================
+   App.css — DISTILL
+   Design: Your original look (Image 1)
+   All class names fixed to match App.js
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap');
+
+
+
+body {
+  font-family: Georgia, serif;
+  background:  #0b0b0b;
+  color:       #ffffff;
+  min-height:  100vh;
+}
+
+/* ── PAGE ─────────────────────────────────────────────────── */
+.page {
+    
+  min-height: 100vh;
+  display:    flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* ── HERO ─────────────────────────────────────────────────── */
+.hero {
+  position:        relative;
+  height:          480px;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  overflow:        hidden;
+  padding:         0 50px;
+}
+
+/* Big scrolling background text — exactly like Image 1 */
+.bg-text {
+  position:       absolute;
+  top:            50%;
+  left:           0;
+  transform:      translateY(-50%);
+  font-size:      20vw;
+  font-weight:    800;
+  color:          #6894d6;
+  opacity:        0.2;
+  white-space:    nowrap;
+  pointer-events: none;
+  user-select:    none;
+  animation:      scrollText 25s linear infinite;
+  font-family:    Georgia, serif;
+}
+
+@keyframes scrollText {
+  0%   { transform: translateY(-50%) translateX(0); }
+  100% { transform: translateY(-50%) translateX(-50%); }
+}
+
+/* Center text over the background */
+.center-text {
+  position:   relative;
+  z-index:    2;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+/* eyebrow — hidden in Image 1, keep hidden */
+.eyebrow { display: none; }
+
+/* Big heading — exactly like Image 1 */
+.center-text h1 {
+  font-size:      60px;
+  font-weight:    700;
+  color:          #ffffff;
+  font-family:    'DM Serif Display', serif;
+  letter-spacing: -1.5px;
+  line-height:    1.1;
+}
+
+/* "clear action" italic amber */
+.highlight {
+  color:      #c97700;
+  font-style: italic;
+}
+
+/* hero-sub — hidden in Image 1 */
+.hero-sub { display: none; }
+
+/* ── UPLOAD SECTION ───────────────────────────────────────── */
+.upload-section {
+  padding:   0 50px 60px;
+  max-width: 900px;
+}
+
+/* UPLOAD DOCUMENT label */
+.upload-label {
+  letter-spacing: 6px;
+  font-size:      14px;
+  color:          #aaaaaa;
+  margin-bottom:  20px;
+  display:        block;
+  font-family:    'Outfit', sans-serif;
+}
+
+/* ── DROP AREA ────────────────────────────────────────────── */
+.drop-area {
+  border:        2px dashed #444;
+  border-radius: 14px;
+  padding:       80px 48px;
+  text-align:    center;
+  background:    #111111;
+  position:      relative;
+  cursor:        pointer;
+  transition:    border-color 0.25s, background 0.25s;
+  overflow:      hidden;
+}
+
+.drop-area:hover,
+.drop-area.drag-over {
+  border-color: #c97700;
+  background:   #151515;
+}
+
+/* Full-zone invisible file input */
+.file-input-hidden {
+  position:  absolute;
+  inset:     0;
+  width:     100%;
+  height:    100%;
+  opacity:   0;
+  cursor:    pointer;
+  font-size: 0;
+}
+
+/* hide drop icon — not in Image 1 */
+.drop-icon { display: none; }
+
+.drop-area h2 {
+  font-size:      36px;
+  margin-bottom:  10px;
+  color:          #ffffff;
+  font-family:    'DM Serif Display', serif;
+  position:       relative;
+  z-index:        1;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.drop-area p {
+  color:          #bbbbbb;
+  margin-bottom:  30px;
+  font-size:      16px;
+  position:       relative;
+  z-index:        1;
+  pointer-events: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
+/* Amber "Choose File" button — exactly like Image 1 */
+.choose-btn-label {
+  display:        inline-block;
+  background:     #c97700;
+  color:          #ffffff;
+  padding:        14px 26px;
+  border-radius:  6px;
+  cursor:         pointer;
+  font-weight:    600;
+  font-family:    'Outfit', sans-serif;
+  font-size:      15px;
+  transition:     background 0.2s;
+  position:       relative;
+  z-index:        1;
+  pointer-events: none;
+}
+
+.drop-area:hover .choose-btn-label,
+.drop-area.drag-over .choose-btn-label {
+  background: #e38b00;
+}
+
+/* ── FILE BAR ─────────────────────────────────────────────── */
+.file-bar {
+  display:       flex;
+  align-items:   center;
+  gap:           14px;
+  padding:       16px 22px;
+  background:    #161616;
+  border:        1px solid #2a2a2a;
+  border-radius: 8px;
+  margin-top:    14px;
+}
+
+.file-icon-sm { font-size: 1.6rem; }
+
+.file-meta {
+  display:        flex;
   flex-direction: column;
-  align-items: center;
+  gap:            3px;
+}
+
+.file-meta strong {
+  font-size:   0.92rem;
+  font-weight: 600;
+  color:       #ffffff;
+}
+
+.file-meta span {
+  font-size:   0.75rem;
+  color:       #666;
+  font-family: 'Outfit', sans-serif;
+}
+
+.file-actions {
+  margin-left: auto;
+  display:     flex;
+  gap:         10px;
+}
+
+.btn-clear {
+  background:    transparent;
+  border:        1px solid #333;
+  color:         #888;
+  padding:       10px 16px;
+  border-radius: 5px;
+  font-size:     0.82rem;
+  cursor:        pointer;
+  font-family:   'Outfit', sans-serif;
+  transition:    all 0.15s;
+}
+.btn-clear:hover { border-color: #fff; color: #fff; }
+
+.btn-analyze {
+  background:    #c97700;
+  color:         #ffffff;
+  border:        none;
+  padding:       10px 22px;
+  border-radius: 6px;
+  font-size:     0.88rem;
+  font-weight:   600;
+  cursor:        pointer;
+  font-family:   'Outfit', sans-serif;
+  transition:    background 0.2s;
+}
+.btn-analyze:hover    { background: #e38b00; }
+.btn-analyze:disabled { background: #333; color: #555; cursor: not-allowed; }
+
+/* ── ERROR ────────────────────────────────────────────────── */
+.error-bar {
+  margin-top:    12px;
+  padding:       12px 16px;
+  background:    rgba(193, 74, 44, 0.1);
+  border:        1px solid rgba(193, 74, 44, 0.3);
+  border-radius: 6px;
+  color:         #ff6b4a;
+  font-size:     0.88rem;
+  font-family:   'Outfit', sans-serif;
+}
+
+/* ── LOADING ──────────────────────────────────────────────── */
+.loading-wrap {
+  text-align:  center;
+  padding:     48px 50px;
+  font-family: 'Outfit', sans-serif;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(280%); }
+}
+
+.spinner {
+  width:            40px;
+  height:           40px;
+  border:           3px solid rgba(201, 119, 0, 0.2);
+  border-top-color: #c97700;
+  border-radius:    50%;
+  margin:           0 auto 20px;
+  animation:        spin 0.85s linear infinite;
+}
+
+.loading-title {
+  font-size:     22px;
+  font-weight:   500;
+  color:         #ffffff;
+  margin-bottom: 8px;
+  font-family:   'DM Serif Display', serif;
+}
+
+.loading-sub {
+  font-size:     15px;
+  color:         #888;
+  margin-bottom: 24px;
+}
+
+.progress-track {
+  height:        2px;
+  background:    #222;
+  border-radius: 2px;
+  overflow:      hidden;
+  max-width:     360px;
+  margin:        0 auto;
+}
+
+.progress-fill {
+  height:        100%;
+  width:         35%;
+  background:    linear-gradient(90deg, #c97700, #f0a832);
+  border-radius: 2px;
+  animation:     shimmer 1.6s ease-in-out infinite;
+}
+
+/* ── RESULTS ──────────────────────────────────────────────── */
+.results {
+  padding:    0 50px 80px;
+  max-width:  900px;
+  animation:  fadeUp 0.5s ease;
+  font-family: 'Outfit', sans-serif;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.results-label {
+  letter-spacing: 4px;
+  font-size:      13px;
+  color:          #aaaaaa;
+  margin-bottom:  24px;
+  text-transform: uppercase;
+  font-family:    'Outfit', sans-serif;
+  display:        flex;
+  align-items:    center;
+  gap:            12px;
+}
+.results-label::after {
+  content:    '';
+  flex:       1;
+  height:     1px;
+  background: #222;
+}
+
+/* ── CARDS ────────────────────────────────────────────────── */
+.card {
+  background:    #111111;
+  border:        1px solid #333;
+  border-radius: 8px;
+  padding:       24px 28px;
+  margin-bottom: 16px;
+  transition:    border-color 0.2s, transform 0.18s;
+}
+
+.card:hover {
+  border-color: #444;
+  transform:    translateY(-2px);
+}
+
+/* TL;DR dark amber card */
+.card-dark {
+  background: #1a1000;
+  border:     1px solid #c97700;
+}
+
+/* Left border accent */
+.card-accent-black { border-left: 3px solid #ffffff; }
+.card-accent-green { border-left: 3px solid #4a9e6b; }
+.card-accent-amber { border-left: 3px solid #c97700; }
+.card-accent-red   { border-left: 3px solid #e05a3a; }
+
+/* Card label */
+.card-label {
+  letter-spacing: 3px;
+  font-size:      12px;
+  color:          #888888;
+  margin-bottom:  12px;
+  text-transform: uppercase;
+  font-family:    'Outfit', sans-serif;
+}
+.card-dark .card-label { color: rgba(201, 119, 0, 0.7); }
+
+/* TL;DR text */
+.tldr-text {
+  font-family: 'DM Serif Display', serif;
+  font-size:   1.2rem;
+  line-height: 1.55;
+  font-style:  italic;
+  color:       #f0a832;
+}
+
+/* Body text */
+.card-body {
+  font-size:   15px;
+  line-height: 1.75;
+  color:       #cccccc;
+}
+
+/* ── TWO COL GRID ─────────────────────────────────────────── */
+.two-col {
+  display:               grid;
+  grid-template-columns: 1fr 1fr;
+  gap:                   16px;
+  margin-bottom:         16px;
+}
+
+/* ── ACTION LIST ──────────────────────────────────────────── */
+.action-list {
+  list-style:     none;
+  display:        flex;
+  flex-direction: column;
+  gap:            8px;
+}
+
+.action-item {
+  display:       flex;
+  align-items:   flex-start;
+  gap:           10px;
+  padding:       10px 13px;
+  background:    rgba(74, 158, 107, 0.07);
+  border:        1px solid rgba(74, 158, 107, 0.15);
+  border-radius: 4px;
+  font-size:     14px;
+  line-height:   1.5;
+  color:         #cccccc;
+}
+
+.action-num {
+  flex-shrink:     0;
+  width:           22px;
+  height:          22px;
+  background:      #4a9e6b;
+  color:           white;
+  border-radius:   50%;
+  display:         flex;
+  align-items:     center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size:       11px;
+  font-weight:     700;
+  margin-top:      1px;
 }
 
-.App-link {
-  color: #61dafb;
+/* ── FACT LIST ────────────────────────────────────────────── */
+.fact-list {
+  display:        flex;
+  flex-direction: column;
+  gap:            8px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.fact-item {
+  display:     flex;
+  gap:         8px;
+  font-size:   14px;
+  line-height: 1.5;
+  color:       #cccccc;
+  align-items: flex-start;
+}
+
+.arrow {
+  color:       #c97700;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top:  2px;
+}
+
+/* ── RESET BTN ────────────────────────────────────────────── */
+.btn-reset {
+  margin-top:     24px;
+  background:     transparent;
+  border:         1px solid #333;
+  color:          #888;
+  padding:        10px 22px;
+  border-radius:  6px;
+  font-size:      14px;
+  cursor:         pointer;
+  font-family:    'Outfit', sans-serif;
+  transition:     all 0.18s;
+  display:        block;
+}
+.btn-reset:hover { border-color: #fff; color: #fff; }
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero           { height: 360px; padding: 0 24px; }
+  .center-text h1 { font-size: 36px; }
+  .upload-section { padding: 0 24px 48px; }
+  .results        { padding: 0 24px 60px; }
+  .drop-area      { padding: 52px 24px; }
+  .two-col        { grid-template-columns: 1fr; }
+  .file-bar       { flex-wrap: wrap; }
+  .file-actions   { width: 100%; justify-content: flex-end; }
+  .loading-wrap   { padding: 40px 24px; }
 }
