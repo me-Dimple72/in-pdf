@@ -58,17 +58,17 @@ async function callGroq(prompt) {
   const response = await axios.post(
     "https://api.groq.com/openai/v1/chat/completions",
     {
-      model:       "llama-3.3-70b-versatile",
+      model:       "openai/gpt-oss-120b",
       messages:    [{ role: "user", content: prompt }],
       temperature: 0.3,
-      max_tokens:  1500,
+      max_tokens:  4000,
     },
     {
       headers: {
         "Authorization": `Bearer ${GROQ_KEY}`,
         "Content-Type":  "application/json",
       },
-      timeout: 30000, // 30 second timeout
+      timeout: 60000, // 60 second timeout
     }
   );
  
@@ -174,8 +174,6 @@ app.post("/api/summarize", async (req, res) => {
  
 });
   
-
-
 
 
 // ── Start Server ──────────────────────────────────────────────
