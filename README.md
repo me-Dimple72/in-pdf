@@ -20,3 +20,7 @@ https://in-pdf.vercel.app
 
 Backend API  
    https://in-pdf-api.onrender.com
+
+Note: The backend is hosted on Render's free tier. The first request after
+inactivity may take 30-60 seconds to wake up.
+   
